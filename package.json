@@ -13,6 +13,9 @@
   "author": "Bartlomiej Panfil",
   "license": "ISC",
   "dependencies": {
-    "parcel": "^2.8.3"
+    "@parcel/transformer-sass": "^2.8.3",
+    "@types/uuid": "^9.0.1",
+    "parcel": "^2.8.3",
+    "uuid": "^9.0.0"
   }
 }
