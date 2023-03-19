@@ -1,1 +1,4 @@
-console.log("Hello World");
+import { FormBuilderApp } from "./jss/App";
+
+const newFormBuilder = new FormBuilderApp();
+newFormBuilder.mainButtonEventListener();
