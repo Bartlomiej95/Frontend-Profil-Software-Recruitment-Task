@@ -10,6 +10,7 @@ export class Block {
         const uuid = uuid4();
         amountOfBlocks++;
         const block = document.createElement("div");
+        block.classList.add("block");
         block.setAttribute("id", `${amountOfBlocks}`);
         const frame = this.frame.buildHTMLFirstFrame(uuid);
         block.appendChild(frame);
@@ -42,6 +43,7 @@ export class Block {
         searchBlock.appendChild(frame);
 
         const button = this.addNewButtonForNewFrame(uuid);
+        button.style.marginLeft = "15px";
         searchBlock.appendChild(button);
     }
 

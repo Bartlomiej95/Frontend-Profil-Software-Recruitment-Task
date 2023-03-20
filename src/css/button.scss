@@ -1,0 +1,38 @@
+.btn-first-block {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    cursor: pointer;
+    background-color: #d6b3ff;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    transition: .2s;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+    width: 50%;
+    color:  #3F66A2;
+
+    &:hover{
+        background-color: #3CB991;
+        color: #23395B;
+    }
+}
+
+.btn-second-frame {
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f4f7fb;
+    transition: .2s;
+
+    &:hover{
+        background-color: #3CB991;
+        color: #23395B;
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+    }
+}
+
