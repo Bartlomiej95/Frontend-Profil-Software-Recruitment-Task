@@ -1,7 +1,11 @@
+import { ConditionTypes } from "./enums/condition-types.enum";
+import { Utils } from "./Utils";
+
 export class Frame {
     constructor(){}
 
     frameId: string = null;
+    utils = new Utils();
 
     buildHTMLFirstFrame(uuid: string){
         const subFrame = document.createElement("div");
@@ -30,17 +34,9 @@ export class Frame {
             // funkcja
         });
 
-        const optionEl1 = document.createElement("option");
-        optionEl1.setAttribute("value", "Yes/No");
-        optionEl1.innerHTML = "Yes/No";
-    
-        const optionEl2 = document.createElement("option");
-        optionEl2.setAttribute("value", "Text");
-        optionEl2.innerHTML = "Text";
-
-        const optionEl3 = document.createElement("option");
-        optionEl3.setAttribute("value", "Number");
-        optionEl3.innerHTML = "Number";
+        const optionEl1 = this.utils.createOptionElement("Yes/No", "Yes/No");
+        const optionEl2 = this.utils.createOptionElement("Text", "Text");
+        const optionEl3 = this.utils.createOptionElement("Number", "Number");
 
         selectEl.appendChild(optionEl1);
         selectEl.appendChild(optionEl2);
@@ -54,7 +50,7 @@ export class Frame {
 
     }
 
-    buildHTMLInnerFrame(typeOfPreviousQuestion: string, uuid: string){
+    buildHTMLInnerFrame(typeOfPreviousQuestion: ConditionTypes, uuid: string){
         const frameDiv = document.createElement("div");
         frameDiv.className = "frame";
         frameDiv.style.marginLeft = "15px";
@@ -80,17 +76,9 @@ export class Frame {
         const selectEl = document.createElement("select");
         selectEl.setAttribute("data-frame-id", uuid)
 
-        const optionEl1 = document.createElement("option");
-        optionEl1.setAttribute("value", "Yes/No");
-        optionEl1.innerHTML = "Yes/No";
-    
-        const optionEl2 = document.createElement("option");
-        optionEl2.setAttribute("value", "Text");
-        optionEl2.innerHTML = "Text";
-
-        const optionEl3 = document.createElement("option");
-        optionEl3.setAttribute("value", "Number");
-        optionEl3.innerHTML = "Number";
+        const optionEl1 = this.utils.createOptionElement("Yes/No", "Yes/No");
+        const optionEl2 = this.utils.createOptionElement("Text", "Text");
+        const optionEl3 = this.utils.createOptionElement("Number", "Number");
     
         selectEl.appendChild(optionEl1);
         selectEl.appendChild(optionEl2);
