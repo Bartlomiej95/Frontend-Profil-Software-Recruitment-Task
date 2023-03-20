@@ -31,7 +31,7 @@ export class Frame {
         selectEl.setAttribute("data-frame-id", uuid);
         selectEl.addEventListener('change', (e) => {
             e.preventDefault();
-            // funkcja
+            this.utils.handleSelectValue(selectEl, e);
         });
 
         const optionEl1 = this.utils.createOptionElement("Yes/No", "Yes/No");
