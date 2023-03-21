@@ -21,10 +21,9 @@ export class Block {
     frame = new Frame();
 
     addNewBlock(blockObj: { Q: string, T: string }){
-        // const uuid = uuid4();
 
         localStorage.setItem("amountOfBlocks", `${this.blockNumber}`);
-        console.log(this.blockNumber);
+        
         this.amountOfFrames = 1;
         const block = document.createElement("div");
         block.classList.add("block");
@@ -39,7 +38,7 @@ export class Block {
     addNewButtonForNewFrame(uuid: string){
         const button = document.createElement("button");
         button.className = "btn-second-frame";
-        button.innerHTML = 'Dodaj następne pytanie';
+        button.innerHTML = 'Add next question';
         button.setAttribute("data-frame-id", uuid);
         button.addEventListener('click', (e) => {
             e.preventDefault();

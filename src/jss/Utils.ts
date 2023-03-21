@@ -50,13 +50,15 @@ export class Utils {
     }
 
     handleSelectValue(select: Element, blockNumber: number, frameNumber:number, type: string, e: Event){
-        select.setAttribute("value", e.target.value);
-        this.handleLocalStorage(`b${blockNumber}f${frameNumber}${type}`, e.target.value);      
+        const { target } = e;
+        select.setAttribute("value", ( target as HTMLButtonElement).value);
+        this.handleLocalStorage(`b${blockNumber}f${frameNumber}${type}`, ( target as HTMLButtonElement).value);      
     }
 
     handleInput(input: Element, blockNumber: number, frameNumber:number, type: string, e: Event) {
-        input.setAttribute("value", e.target.value);
-        this.handleLocalStorage(`b${blockNumber}f${frameNumber}${type}`, e.target.value);        
+        const { target } = e;
+        input.setAttribute("value", ( target as HTMLButtonElement).value );
+        this.handleLocalStorage(`b${blockNumber}f${frameNumber}${type}`, ( target as HTMLButtonElement).value);        
     }
 
     handleLocalStorage(key: string, valueKey: string) {
