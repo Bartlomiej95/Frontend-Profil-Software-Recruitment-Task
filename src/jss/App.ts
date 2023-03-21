@@ -17,9 +17,9 @@ export class FormBuilderApp {
     mainButtonEventListener() {
         this.buttonAddBlock.addEventListener('click', (e) => {
             e.preventDefault();
-            // let amountOfBlocks = Number(localStorage.getItem("amountOfBlocks"));
-            this.amountOfBlocks++;
-            const newBlock = new Block(this.amountOfBlocks);
+            let amountOfBlocks = Number(localStorage.getItem("amountOfBlocks"));
+            amountOfBlocks++;
+            const newBlock = new Block(amountOfBlocks);
             const block = newBlock.addNewBlock(this.blockObj);
             this.formBuilder.appendChild(block);
         })
