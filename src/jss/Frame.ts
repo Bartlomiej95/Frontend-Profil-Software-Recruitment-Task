@@ -19,7 +19,7 @@ export class Frame {
         const inputQuestion = document.createElement("input");
         inputQuestion.setAttribute("value", blockObj.Q);
         inputQuestion.setAttribute("type", "text");
-        inputQuestion.setAttribute("placeholder", "Your Question");
+        inputQuestion.setAttribute("placeholder", "Your Question...");
         inputQuestion.addEventListener('keyup', (e) => {
             e.preventDefault();
             this.utils.handleInput(inputQuestion, blockNumber, frameNumber, "Q",  e);
@@ -77,6 +77,7 @@ export class Frame {
 
         const inputCondition = document.createElement("input");
         inputCondition.setAttribute("value", frameObj.ci);
+        inputCondition.setAttribute("placeholder", "Your answer...")
         inputCondition.addEventListener('keyup', (e) => {
             e.preventDefault();
             this.utils.handleInput(inputCondition, blockNumber, amountOfFrames, "ci",  e);
@@ -89,6 +90,7 @@ export class Frame {
 
         const inputQuestion = document.createElement("input");
         inputQuestion.setAttribute("value", frameObj.q);
+        inputQuestion.setAttribute("placeholder", "Your Question...")
         inputQuestion.addEventListener('keyup', (e) => {
             e.preventDefault();
             this.utils.handleInput(inputQuestion, blockNumber, amountOfFrames, "q",  e);

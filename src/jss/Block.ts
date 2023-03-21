@@ -38,7 +38,7 @@ export class Block {
     addNewButtonForNewFrame(uuid: string){
         const button = document.createElement("button");
         button.className = "btn-second-frame";
-        button.innerHTML = 'Dodaj następne pytanie';
+        button.innerHTML = 'Add next question';
         button.setAttribute("data-frame-id", uuid);
         button.addEventListener('click', (e) => {
             e.preventDefault();
