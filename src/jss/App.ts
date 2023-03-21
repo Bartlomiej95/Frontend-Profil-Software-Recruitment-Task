@@ -10,8 +10,8 @@ export class FormBuilderApp {
 
     block = new Block(this.amountOfBlocks);
     blockObj = {
-        q: "",
-        t: "",
+        Q: "",
+        T: "",
     }
 
     mainButtonEventListener() {
