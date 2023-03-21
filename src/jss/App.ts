@@ -7,6 +7,7 @@ export class FormBuilderApp {
     amountOfBlocks = 0;
     buttonAddBlock = document.querySelector('.btn-first-block');
     formBuilder = document.querySelector('.form-builder');
+    resetBtn = document.querySelector('.btn-reset');
 
     block = new Block(this.amountOfBlocks);
     blockObj = {
@@ -17,11 +18,16 @@ export class FormBuilderApp {
     mainButtonEventListener() {
         this.buttonAddBlock.addEventListener('click', (e) => {
             e.preventDefault();
-            // let amountOfBlocks = Number(localStorage.getItem("amountOfBlocks"));
-            this.amountOfBlocks++;
-            const newBlock = new Block(this.amountOfBlocks);
+            let amountOfBlocks = Number(localStorage.getItem("amountOfBlocks"));
+            amountOfBlocks++;
+            const newBlock = new Block(amountOfBlocks);
             const block = newBlock.addNewBlock(this.blockObj);
             this.formBuilder.appendChild(block);
+        })
+
+        this.resetBtn.addEventListener('click', (e) => {
+            // e.preventDefault();
+            localStorage.clear();
         })
     }
 
@@ -54,14 +60,6 @@ export class FormBuilderApp {
                 newBlock.addNewFrameToBlock(block.lastChild as Element, frameObj);
             }
         }
-
-        // let x = 1; //number of blocks
-        // let y = 1; //number of frames in specify block
-        // let item = null;
-        // do {
-        //     const item = localStorage.getItem(`b${x}f${y}ci`);
-        //     console.log(item);
-        // } while(item !== null);
     }
 
     initialApp(){
