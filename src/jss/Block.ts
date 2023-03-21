@@ -7,22 +7,31 @@ export class Block {
 
     }
     blockNumber = 0;
-    frameNumber = 0;
+    amountOfFrames = 0;
+    uuid = uuid4();
+
+    frameObj = {
+        q: '',
+        t: '',
+        ci: '',
+        cs: '',
+    }
+
 
     frame = new Frame();
 
-    addNewBlock(blockObj: { q: string, t: string}){
-        const uuid = uuid4();
-        this.blockNumber++;
-        localStorage.setItem("amountOfBlocks", `${this.blockNumber}`);
+    addNewBlock(blockObj: { Q: string, T: string }){
+        // const uuid = uuid4();
 
-        this.frameNumber = 1;
+        localStorage.setItem("amountOfBlocks", `${this.blockNumber}`);
+        console.log(this.blockNumber);
+        this.amountOfFrames = 1;
         const block = document.createElement("div");
         block.classList.add("block");
         block.setAttribute("id", `${this.blockNumber}`);
-        const frame = this.frame.buildHTMLFirstFrame(uuid, blockObj, this.blockNumber, this.frameNumber);
+        const frame = this.frame.buildHTMLFirstFrame(this.uuid, blockObj, this.blockNumber, this.amountOfFrames);
         block.appendChild(frame);
-        const button = this.addNewButtonForNewFrame(uuid);
+        const button = this.addNewButtonForNewFrame(this.uuid);
         block.appendChild(button);
         return block;
     }
@@ -34,20 +43,21 @@ export class Block {
         button.setAttribute("data-frame-id", uuid);
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            this.addNewFrameToBlock(button);
+            this.addNewFrameToBlock(button, this.frameObj);
             button.setAttribute("disabled", "true");
         });
         return button;
     }
 
-    addNewFrameToBlock(btn: Element){
+    addNewFrameToBlock(btn: Element, frameObj: { q: string, t: string, ci: string, cs: string }){
         const uuid = uuid4();
-        this.frameNumber++;
+        this.amountOfFrames++;
 
         const searchBlock = this.findBlock(btn);
         const searchType = this.searchTypeCondition(btn);
-       
-        const frame = this.frame.buildHTMLInnerFrame(searchType, uuid);
+        
+        const newFrame = new Frame()
+        const frame = newFrame.buildHTMLInnerFrame(this.blockNumber, this.amountOfFrames-1, searchType, frameObj, uuid);
         
         searchBlock.appendChild(frame);
 
