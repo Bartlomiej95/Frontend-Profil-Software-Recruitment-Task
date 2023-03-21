@@ -36,3 +36,17 @@
     }
 }
 
+.btn-reset {
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: .2s;
+    text-transform: uppercase;
+    background-color: brown;
+    color: white;
+
+    &:hover{
+        cursor: pointer;
+        background-color: lightcoral;
+    }
+}
+

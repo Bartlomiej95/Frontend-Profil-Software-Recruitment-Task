@@ -7,6 +7,7 @@ export class FormBuilderApp {
     amountOfBlocks = 0;
     buttonAddBlock = document.querySelector('.btn-first-block');
     formBuilder = document.querySelector('.form-builder');
+    resetBtn = document.querySelector('.btn-reset');
 
     block = new Block(this.amountOfBlocks);
     blockObj = {
@@ -22,6 +23,11 @@ export class FormBuilderApp {
             const newBlock = new Block(amountOfBlocks);
             const block = newBlock.addNewBlock(this.blockObj);
             this.formBuilder.appendChild(block);
+        })
+
+        this.resetBtn.addEventListener('click', (e) => {
+            // e.preventDefault();
+            localStorage.clear();
         })
     }
 
