@@ -54,14 +54,6 @@ export class FormBuilderApp {
                 newBlock.addNewFrameToBlock(block.lastChild as Element, frameObj);
             }
         }
-
-        // let x = 1; //number of blocks
-        // let y = 1; //number of frames in specify block
-        // let item = null;
-        // do {
-        //     const item = localStorage.getItem(`b${x}f${y}ci`);
-        //     console.log(item);
-        // } while(item !== null);
     }
 
     initialApp(){

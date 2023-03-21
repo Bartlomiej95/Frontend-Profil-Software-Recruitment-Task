@@ -21,10 +21,9 @@ export class Block {
     frame = new Frame();
 
     addNewBlock(blockObj: { Q: string, T: string }){
-        // const uuid = uuid4();
 
         localStorage.setItem("amountOfBlocks", `${this.blockNumber}`);
-        console.log(this.blockNumber);
+        
         this.amountOfFrames = 1;
         const block = document.createElement("div");
         block.classList.add("block");

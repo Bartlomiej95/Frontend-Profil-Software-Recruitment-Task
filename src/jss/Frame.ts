@@ -2,9 +2,7 @@ import { ConditionTypes } from "./enums/condition-types.enum";
 import { Utils } from "./Utils";
 
 export class Frame {
-    constructor(){
-      
-    }
+    constructor(){}
 
     amountOfFrames: number | null = null;
     frameId: string = null;
