@@ -2,17 +2,25 @@ import { v4 as uuid4 } from 'uuid';
 import { Frame } from './Frame';
 
 export class Block {
-    constructor(){}
+    constructor(amount: number){
+        this.blockNumber = amount; 
+
+    }
+    blockNumber = 0;
+    frameNumber = 0;
 
     frame = new Frame();
 
-    addNewBlock(amountOfBlocks: number){
+    addNewBlock(blockObj: { q: string, t: string}){
         const uuid = uuid4();
-        amountOfBlocks++;
+        this.blockNumber++;
+        localStorage.setItem("amountOfBlocks", `${this.blockNumber}`);
+
+        this.frameNumber = 1;
         const block = document.createElement("div");
         block.classList.add("block");
-        block.setAttribute("id", `${amountOfBlocks}`);
-        const frame = this.frame.buildHTMLFirstFrame(uuid);
+        block.setAttribute("id", `${this.blockNumber}`);
+        const frame = this.frame.buildHTMLFirstFrame(uuid, blockObj, this.blockNumber, this.frameNumber);
         block.appendChild(frame);
         const button = this.addNewButtonForNewFrame(uuid);
         block.appendChild(button);
@@ -34,7 +42,8 @@ export class Block {
 
     addNewFrameToBlock(btn: Element){
         const uuid = uuid4();
-        console.log(btn);
+        this.frameNumber++;
+
         const searchBlock = this.findBlock(btn);
         const searchType = this.searchTypeCondition(btn);
        
@@ -54,10 +63,8 @@ export class Block {
     }
 
     searchTypeCondition(element: Element){
-        console.log(element);
         const btnDataBlockId = element.getAttribute("data-frame-id");
         const searchSelect = document.querySelector(`select[data-frame-id="${btnDataBlockId}"`);
-        console.log(searchSelect);
         return searchSelect.value;
     }
 }

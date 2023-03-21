@@ -7,7 +7,7 @@ export class Frame {
     frameId: string = null;
     utils = new Utils();
 
-    buildHTMLFirstFrame(uuid: string){
+    buildHTMLFirstFrame(uuid: string, blockObj: { q: string, t: string}, blockNumber: number, frameNumber: number){
         const subFrame = document.createElement("div");
         subFrame.setAttribute("data-frame-id", uuid);
 
@@ -19,24 +19,34 @@ export class Frame {
         labelQuestion.innerHTML = "Question";
 
         const inputQuestion = document.createElement("input");
+        inputQuestion.setAttribute("value", blockObj.q);
         inputQuestion.setAttribute("type", "text");
-        inputQuestion.setAttribute("value", "");
         inputQuestion.setAttribute("placeholder", "Your Question");
+        inputQuestion.addEventListener('keyup', (e) => {
+            e.preventDefault();
+            this.utils.handleInput(inputQuestion, blockNumber, frameNumber, "q",  e);
+        });
+       
+
         labelQuestion.appendChild(inputQuestion);
 
         const labelType = document.createElement("label");
         labelType.innerHTML = "Type";
         const selectEl = document.createElement("select");
-        selectEl.setAttribute("id", `${uuid}`);
+        selectEl.setAttribute("value", "Text")
+        // selectEl.setAttribute("id", `${uuid}`);
         selectEl.setAttribute("data-frame-id", uuid);
         selectEl.addEventListener('change', (e) => {
             e.preventDefault();
-            this.utils.handleSelectValue(selectEl, e);
+            this.utils.handleSelectValue(selectEl, blockNumber, frameNumber, "t", e);
         });
 
         const optionEl1 = this.utils.createOptionElement("Yes/No", "Yes/No");
+        if(blockObj.t === "Yes/No") optionEl1.setAttribute("selected", "true");
         const optionEl2 = this.utils.createOptionElement("Text", "Text");
+        if(blockObj.t === "Text") optionEl2.setAttribute("selected", "true");
         const optionEl3 = this.utils.createOptionElement("Number", "Number");
+        if(blockObj.t === "Number") optionEl3.setAttribute("selected", "true");
 
         selectEl.appendChild(optionEl1);
         selectEl.appendChild(optionEl2);

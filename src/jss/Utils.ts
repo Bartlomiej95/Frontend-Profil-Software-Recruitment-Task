@@ -42,7 +42,17 @@ export class Utils {
         return selectCondition;
     }
 
-    handleSelectValue(select: Element, e: Event){
+    handleSelectValue(select: Element, blockNumber: number, frameNumber:number, type: string, e: Event){
         select.setAttribute("value", e.target.value);
+        this.handleLocalStorage(`b${blockNumber}f${frameNumber}${type}`, e.target.value);      
+    }
+
+    handleInput(input: Element, blockNumber: number, frameNumber:number, type: string, e: Event) {
+        input.setAttribute("value", e.target.value);
+        this.handleLocalStorage(`b${blockNumber}f${frameNumber}${type}`, e.target.value);        
+    }
+
+    handleLocalStorage(key: string, valueKey: string) {
+        localStorage.setItem(key, valueKey);
     }
 }
